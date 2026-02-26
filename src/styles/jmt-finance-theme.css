@@ -1,144 +1,372 @@
-/* ==========================================================
+/* =========================================================
    JMT FINANCE THEME (JustMindsetTrade)
-   - Dark metal + neon green
-   - Works with: <html data-variant="finance" data-theme="dark">
-   - Includes: panel chrome + optional panel hiding (whitelist)
-   ========================================================== */
+   Scope: <html data-variant="finance" data-theme="dark">
+   - Dark leather-ish + neon green (luxury tech)
+   - Panel cards, header, badges, buttons, inputs, scrollbar
+========================================================= */
 
-/* ---------- Core Theme Variables ---------- */
 :root[data-variant="finance"][data-theme="dark"]{
-  --bg: #070C0A;
-  --bg-secondary: #0B1410;
-  --surface: #0E1B15;
-  --surface-hover: #10221A;
-  --surface-active: #12281D;
+  /* Brand */
+  --jmt-green: #52C573;
+  --jmt-green2: #4DD8B1;
+  --jmt-cream: #F0E9D8;
+  --jmt-bg: #0D1A14;
+  --jmt-bg2: #10291D;
 
-  --border: rgba(82,197,115,0.18);
-  --border-strong: rgba(82,197,115,0.30);
-  --border-subtle: rgba(255,255,255,0.06);
+  /* Surfaces */
+  --jmt-surface: rgba(16, 41, 29, 0.62);
+  --jmt-surface2: rgba(13, 26, 20, 0.58);
+  --jmt-surface3: rgba(16, 41, 29, 0.38);
 
-  --text: #F0E9D8;
-  --text-secondary: rgba(240,233,216,0.78);
-  --text-dim: rgba(240,233,216,0.62);
-  --text-muted: rgba(240,233,216,0.48);
+  /* Text */
+  --jmt-text: var(--jmt-cream);
+  --jmt-muted: rgba(240, 233, 216, 0.72);
+  --jmt-dim: rgba(240, 233, 216, 0.55);
 
-  --green: #52C573;
-  --green-2: #4DD8B1;
-  --red: #FF4D6D;
-  --yellow: #E6C35A;
+  /* Borders */
+  --jmt-border: rgba(82, 197, 115, 0.18);
+  --jmt-border-strong: rgba(82, 197, 115, 0.32);
+  --jmt-border-soft: rgba(255, 255, 255, 0.06);
 
-  --shadow-color: rgba(0,0,0,0.55);
-  --glow: 0 0 18px rgba(82,197,115,0.20);
-  --glow-strong: 0 0 26px rgba(77,216,177,0.22);
+  /* Shadows / glow */
+  --jmt-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  --jmt-shadow2: 0 18px 50px rgba(0,0,0,0.55);
+  --jmt-glow: 0 0 0 1px rgba(82,197,115,0.18), 0 0 22px rgba(82,197,115,0.08);
 
-  --panel-radius: 14px;
+  /* Radius / spacing */
+  --jmt-r: 14px;
+  --jmt-r2: 18px;
+  --jmt-pad: 12px;
 
-  --font-body: system-ui, -apple-system, "Prompt", sans-serif;
-  --font-head: "Playfair Display", "Prompt", system-ui, sans-serif;
-
-  --map-bg: #050907;
-  --map-grid: rgba(82,197,115,0.10);
+  /* Focus */
+  --jmt-focus: 0 0 0 3px rgba(77,216,177,0.20);
 }
 
-/* ---------- Background vibe ---------- */
+/* =========================
+   Base / Page
+========================= */
 :root[data-variant="finance"][data-theme="dark"] body{
-  background:
-    radial-gradient(1200px 600px at 20% 10%, rgba(82,197,115,0.10), transparent 55%),
-    radial-gradient(900px 500px at 85% 20%, rgba(77,216,177,0.08), transparent 60%),
-    linear-gradient(180deg, #050907 0%, #070C0A 40%, #060A08 100%);
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(82,197,115,0.10), transparent 60%),
+              radial-gradient(900px 520px at 80% 30%, rgba(77,216,177,0.08), transparent 55%),
+              linear-gradient(180deg, var(--jmt-bg2), var(--jmt-bg));
+  color: var(--jmt-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---------- Panel chrome (metal frame) ---------- */
-[data-variant="finance"] .panel,
-[data-variant="finance"] .map-section,
-[data-variant="finance"] .panel-header,
-[data-variant="finance"] .panel-content{
-  font-family: var(--font-body);
+/* Smooth edges on everything */
+:root[data-variant="finance"][data-theme="dark"] *,
+:root[data-variant="finance"][data-theme="dark"] *::before,
+:root[data-variant="finance"][data-theme="dark"] *::after{
+  box-sizing: border-box;
 }
 
-[data-variant="finance"] .panel{
-  border-radius: var(--panel-radius);
+/* Optional: anchor style */
+:root[data-variant="finance"][data-theme="dark"] a{
+  color: var(--jmt-green2);
+  text-decoration: none;
+}
+:root[data-variant="finance"][data-theme="dark"] a:hover{
+  text-decoration: underline;
+}
+
+/* =========================
+   Scrollbar (Chrome/Edge)
+========================= */
+:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+}
+:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-track{
+  background: rgba(255,255,255,0.03);
+}
+:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-thumb{
+  background: rgba(82,197,115,0.20);
+  border: 1px solid rgba(82,197,115,0.22);
+  border-radius: 999px;
+}
+:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-thumb:hover{
+  background: rgba(82,197,115,0.28);
+}
+
+/* =========================
+   App wrappers (safe)
+========================= */
+:root[data-variant="finance"][data-theme="dark"] #app{
+  color: var(--jmt-text);
+}
+
+/* =========================
+   Panels Grid
+========================= */
+:root[data-variant="finance"][data-theme="dark"] #panelsGrid.panels-grid{
+  gap: 10px;
+}
+
+/* =========================
+   Panel Card
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel{
+  background: linear-gradient(180deg, var(--jmt-surface), var(--jmt-surface2));
+  border: 1px solid var(--jmt-border);
+  border-radius: var(--jmt-r);
+  box-shadow: var(--jmt-shadow);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
-    var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: 0 10px 30px var(--shadow-color), var(--glow);
   position: relative;
 }
 
-[data-variant="finance"] .panel::before{
-  content:"";
-  position:absolute; inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.06), transparent 35%),
-    linear-gradient(315deg, rgba(82,197,115,0.10), transparent 40%);
-  opacity: 0.35;
+/* subtle inner highlight */
+:root[data-variant="finance"][data-theme="dark"] .panel::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px 250px at 30% 0%, rgba(82,197,115,0.10), transparent 60%);
+  pointer-events: none;
+  opacity: 0.8;
 }
 
-[data-variant="finance"] .panel-header{
-  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.15));
-  border-bottom: 1px solid rgba(82,197,115,0.22);
-}
-
-[data-variant="finance"] .panel-title{
-  font-family: var(--font-head);
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
-/* ---------- Buttons / chips ---------- */
-[data-variant="finance"] button,
-[data-variant="finance"] .btn,
-[data-variant="finance"] .chip,
-[data-variant="finance"] .pill{
-  border-radius: 10px;
-  border: 1px solid rgba(82,197,115,0.28);
-  background: rgba(13,26,20,0.55);
-  color: var(--text);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-}
-
-[data-variant="finance"] button:hover,
-[data-variant="finance"] .btn:hover{
-  border-color: rgba(77,216,177,0.55);
-  box-shadow: var(--glow-strong);
+/* hover state */
+:root[data-variant="finance"][data-theme="dark"] .panel:hover{
+  border-color: var(--jmt-border-strong);
+  box-shadow: var(--jmt-shadow2);
   transform: translateY(-1px);
+  transition: 180ms ease;
 }
 
-/* ---------- Optional: hide overlays that block UI ---------- */
-[data-variant="finance"] .community-widget,
-[data-variant="finance"] .signal-modal-overlay{
-  display: none !important;
+/* Wide panel (video/live/news) */
+:root[data-variant="finance"][data-theme="dark"] .panel.panel-wide{
+  border-radius: var(--jmt-r2);
 }
 
-/* ==========================================================
-   PANEL HIDING (CSS-only)
-   วิธีปลอดภัย: ซ่อนทั้งหมดก่อน แล้วเปิดเฉพาะที่ต้องการ (whitelist)
-   - ต้องรู้ selector ของแต่ละ panel จาก DevTools ก่อน
-   ========================================================== */
-
-/* A) ซ่อนทุก panel (ปิดไว้ก่อน) */
-/*
-[data-variant="finance"] .panel{ display:none !important; }
-*/
-
-/* B) เปิดเฉพาะ panel ที่ต้องการ (เติม selector จริงทีหลัง) */
-/*
-[data-variant="finance"] .panel[data-panel="monitor-world-news"],
-[data-variant="finance"] .panel[data-panel="government"],
-[data-variant="finance"] .panel[data-panel="strategic-risk-overview"],
-[data-variant="finance"] .panel[data-panel="commodities"],
-[data-variant="finance"] .panel[data-panel="market"],
-[data-variant="finance"] .panel[data-panel="market-news"],
-[data-variant="finance"] .panel[data-panel="forex-currencies"],
-[data-variant="finance"] .panel[data-panel="crypto"],
-[data-variant="finance"] .panel[data-panel="crypto-news"],
-[data-variant="finance"] .panel[data-panel="central-bank-watch"],
-[data-variant="finance"] .panel[data-panel="sector-heatmap"],
-[data-variant="finance"] .panel[data-panel="market-radar"],
-[data-variant="finance"] .panel[data-panel="market-analysis"]{
-  display:block !important;
+/* =========================
+   Panel Header
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--jmt-pad);
+  border-bottom: 1px solid rgba(82,197,115,0.14);
+  background: linear-gradient(180deg, rgba(13,26,20,0.30), rgba(13,26,20,0.10));
+  position: relative;
+  z-index: 1;
 }
-*/
+
+:root[data-variant="finance"][data-theme="dark"] .panel-header-left{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* Title text */
+:root[data-variant="finance"][data-theme="dark"] .panel-title{
+  color: var(--jmt-text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* error header variant (จากรูปคุณมี .panel-header-error) */
+:root[data-variant="finance"][data-theme="dark"] .panel-header.panel-header-error{
+  border-bottom-color: rgba(255, 90, 90, 0.25);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel-header.panel-header-error .panel-title{
+  color: rgba(255, 110, 110, 0.95);
+}
+
+/* =========================
+   Header badges / counts
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-new-badge,
+:root[data-variant="finance"][data-theme="dark"] .panel-data-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  border: 1px solid var(--jmt-border-soft);
+  background: rgba(255,255,255,0.04);
+  color: var(--jmt-muted);
+}
+
+/* Live badge */
+:root[data-variant="finance"][data-theme="dark"] .panel-data-badge.live{
+  border-color: rgba(77,216,177,0.35);
+  background: rgba(77,216,177,0.10);
+  color: var(--jmt-green2);
+}
+
+/* Count */
+:root[data-variant="finance"][data-theme="dark"] .panel-count{
+  color: var(--jmt-dim);
+  font-size: 12px;
+}
+
+/* =========================
+   Header action buttons
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn{
+  border: 1px solid rgba(82,197,115,0.32);
+  background: rgba(82,197,115,0.10);
+  color: var(--jmt-green);
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(82,197,115,0.10);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn:hover{
+  background: rgba(82,197,115,0.16);
+  box-shadow: var(--jmt-glow);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn:active{
+  transform: translateY(1px);
+}
+
+/* if you have icon buttons in header */
+:root[data-variant="finance"][data-theme="dark"] .panel-header button{
+  outline: none;
+}
+:root[data-variant="finance"][data-theme="dark"] .panel-header button:focus{
+  box-shadow: var(--jmt-focus);
+}
+
+/* =========================
+   Panel Content
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-content{
+  padding: 10px var(--jmt-pad) 12px;
+  color: var(--jmt-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* Common text inside content */
+:root[data-variant="finance"][data-theme="dark"] .panel-content,
+:root[data-variant="finance"][data-theme="dark"] .panel-content p,
+:root[data-variant="finance"][data-theme="dark"] .panel-content span,
+:root[data-variant="finance"][data-theme="dark"] .panel-content li{
+  color: var(--jmt-muted);
+}
+
+/* Empty/error states in content (ข้อความแดงในรูป) */
+:root[data-variant="finance"][data-theme="dark"] .panel-content .error,
+:root[data-variant="finance"][data-theme="dark"] .panel-content .error-text{
+  color: rgba(255, 110, 110, 0.95);
+}
+
+/* =========================
+   Inputs / search / chips (จากรูปมี pill buttons)
+========================= */
+:root[data-variant="finance"][data-theme="dark"] input,
+:root[data-variant="finance"][data-theme="dark"] select,
+:root[data-variant="finance"][data-theme="dark"] textarea{
+  background: rgba(13,26,20,0.55);
+  border: 1px solid rgba(82,197,115,0.22);
+  color: var(--jmt-text);
+  border-radius: 999px;
+  padding: 6px 10px;
+  outline: none;
+}
+
+:root[data-variant="finance"][data-theme="dark"] input::placeholder,
+:root[data-variant="finance"][data-theme="dark"] textarea::placeholder{
+  color: rgba(240,233,216,0.45);
+}
+
+:root[data-variant="finance"][data-theme="dark"] input:focus,
+:root[data-variant="finance"][data-theme="dark"] select:focus,
+:root[data-variant="finance"][data-theme="dark"] textarea:focus{
+  border-color: rgba(77,216,177,0.45);
+  box-shadow: var(--jmt-focus);
+}
+
+/* pill buttons / chips */
+:root[data-variant="finance"][data-theme="dark"] .chip,
+:root[data-variant="finance"][data-theme="dark"] .pill,
+:root[data-variant="finance"][data-theme="dark"] .tag{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(82,197,115,0.22);
+  background: rgba(16,41,29,0.35);
+  color: var(--jmt-muted);
+}
+:root[data-variant="finance"][data-theme="dark"] .chip:hover,
+:root[data-variant="finance"][data-theme="dark"] .pill:hover,
+:root[data-variant="finance"][data-theme="dark"] .tag:hover{
+  border-color: rgba(82,197,115,0.32);
+  background: rgba(16,41,29,0.48);
+}
+
+/* =========================
+   Resize handle (จาก DOM มี .panel-resize-handle)
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-resize-handle{
+  opacity: 0.55;
+  transition: 160ms ease;
+}
+:root[data-variant="finance"][data-theme="dark"] .panel:hover .panel-resize-handle{
+  opacity: 0.9;
+}
+
+/* =========================
+   Modals / overlays (จาก DOM มี .modal-overlay, .signal-modal-overlay)
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .modal-overlay,
+:root[data-variant="finance"][data-theme="dark"] .signal-modal-overlay{
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+}
+
+/* =========================
+   Side widgets
+========================= */
+:root[data-variant="finance"][data-theme="dark"] .community-widget,
+:root[data-variant="finance"][data-theme="dark"] .country-brief-overlay{
+  border: 1px solid rgba(82,197,115,0.18);
+  background: rgba(13,26,20,0.55);
+  box-shadow: var(--jmt-shadow);
+  border-radius: var(--jmt-r);
+}
+
+/* =========================
+   Target specific panels by data-panel
+   (ใช้ตามที่คุณเห็นใน DevTools)
+========================= */
+
+/* Example: Commodities News */
+:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="commodities-news"]{
+  border-color: rgba(77,216,177,0.30);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="commodities-news"] .panel-title{
+  color: var(--jmt-green2);
+}
+
+/* Example: Market Analysis */
+:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="analysis"]{
+  border-color: rgba(82,197,115,0.26);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="analysis"] .panel-title{
+  color: var(--jmt-cream);
+}
+
+/* Example: Economic */
+:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="economic"] .panel-title{
+  color: rgba(240,233,216,0.92);
+}
+
+/* =========================
+   Safety: prevent ugly selection highlight
+========================= */
+:root[data-variant="finance"][data-theme="dark"] ::selection{
+  background: rgba(77,216,177,0.22);
+  color: var(--jmt-text);
+}
