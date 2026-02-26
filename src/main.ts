@@ -1,3 +1,4 @@
+import './styles/jmt-finance-theme.css';
 import './styles/base-layer.css';
 import './styles/happy-theme.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
