@@ -91,5 +91,6 @@
   },
   "overrides": {
     "fast-xml-parser": "^5.3.7"
+    "sharp": "^0.33.0"
   }
 }
