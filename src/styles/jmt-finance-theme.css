@@ -1,372 +1,440 @@
 /* =========================================================
    JMT FINANCE THEME (JustMindsetTrade)
-   Scope: <html data-variant="finance" data-theme="dark">
-   - Dark leather-ish + neon green (luxury tech)
-   - Panel cards, header, badges, buttons, inputs, scrollbar
+   - Dark metal + neon green
+   - Scoped by: <html data-variant="finance" data-theme="dark">
+   - Includes: top bar buttons + panels grid + chips + forms
 ========================================================= */
 
 :root[data-variant="finance"][data-theme="dark"]{
   /* Brand */
   --jmt-green: #52C573;
-  --jmt-green2: #4DD8B1;
+  --jmt-green-2: #4DD8B1;
   --jmt-cream: #F0E9D8;
-  --jmt-bg: #0D1A14;
-  --jmt-bg2: #10291D;
 
-  /* Surfaces */
-  --jmt-surface: rgba(16, 41, 29, 0.62);
-  --jmt-surface2: rgba(13, 26, 20, 0.58);
-  --jmt-surface3: rgba(16, 41, 29, 0.38);
+  /* Base */
+  --jmt-bg: #0D1A14;        /* charcoal black-green */
+  --jmt-bg-2: #10291D;      /* deep forest green */
+  --jmt-surface: #0E1B15;   /* panel surface */
+  --jmt-surface-2: #12221A; /* hover surface */
+  --jmt-line: rgba(82,197,115,.18);
+  --jmt-line-strong: rgba(82,197,115,.32);
+  --jmt-line-soft: rgba(240,233,216,.08);
 
   /* Text */
-  --jmt-text: var(--jmt-cream);
-  --jmt-muted: rgba(240, 233, 216, 0.72);
-  --jmt-dim: rgba(240, 233, 216, 0.55);
+  --jmt-text: #F0E9D8;
+  --jmt-text-dim: rgba(240,233,216,.72);
+  --jmt-text-mute: rgba(240,233,216,.55);
 
-  /* Borders */
-  --jmt-border: rgba(82, 197, 115, 0.18);
-  --jmt-border-strong: rgba(82, 197, 115, 0.32);
-  --jmt-border-soft: rgba(255, 255, 255, 0.06);
+  /* Shadow / Glow */
+  --jmt-glow: rgba(82,197,115,.35);
+  --jmt-glow-2: rgba(77,216,177,.28);
+  --jmt-shadow: 0 18px 40px rgba(0,0,0,.45);
+  --jmt-shadow-soft: 0 10px 22px rgba(0,0,0,.32);
 
-  /* Shadows / glow */
-  --jmt-shadow: 0 10px 30px rgba(0,0,0,0.45);
-  --jmt-shadow2: 0 18px 50px rgba(0,0,0,0.55);
-  --jmt-glow: 0 0 0 1px rgba(82,197,115,0.18), 0 0 22px rgba(82,197,115,0.08);
+  /* Radius */
+  --jmt-r12: 12px;
+  --jmt-r14: 14px;
+  --jmt-r16: 16px;
 
-  /* Radius / spacing */
-  --jmt-r: 14px;
-  --jmt-r2: 18px;
-  --jmt-pad: 12px;
-
-  /* Focus */
-  --jmt-focus: 0 0 0 3px rgba(77,216,177,0.20);
+  /* Motion */
+  --jmt-ease: cubic-bezier(.2,.9,.2,1);
 }
 
-/* =========================
-   Base / Page
-========================= */
+/* =========
+   Base
+========= */
 :root[data-variant="finance"][data-theme="dark"] body{
-  background: radial-gradient(1200px 700px at 20% 10%, rgba(82,197,115,0.10), transparent 60%),
-              radial-gradient(900px 520px at 80% 30%, rgba(77,216,177,0.08), transparent 55%),
-              linear-gradient(180deg, var(--jmt-bg2), var(--jmt-bg));
+  background: radial-gradient(1000px 500px at 10% 0%, rgba(82,197,115,.10), transparent 55%),
+              radial-gradient(900px 500px at 80% 10%, rgba(77,216,177,.08), transparent 60%),
+              linear-gradient(180deg, var(--jmt-bg), var(--jmt-bg-2));
   color: var(--jmt-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth edges on everything */
-:root[data-variant="finance"][data-theme="dark"] *,
-:root[data-variant="finance"][data-theme="dark"] *::before,
-:root[data-variant="finance"][data-theme="dark"] *::after{
-  box-sizing: border-box;
+:root[data-variant="finance"][data-theme="dark"] *{
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Optional: anchor style */
 :root[data-variant="finance"][data-theme="dark"] a{
-  color: var(--jmt-green2);
+  color: var(--jmt-cream);
   text-decoration: none;
 }
 :root[data-variant="finance"][data-theme="dark"] a:hover{
-  text-decoration: underline;
+  color: var(--jmt-green-2);
 }
 
-/* =========================
-   Scrollbar (Chrome/Edge)
-========================= */
-:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar{
-  width: 10px;
-  height: 10px;
-}
+/* =========
+   Scrollbar
+========= */
+:root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar{ width: 10px; height: 10px; }
 :root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-track{
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,.35);
+  border-radius: 20px;
 }
 :root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-thumb{
-  background: rgba(82,197,115,0.20);
-  border: 1px solid rgba(82,197,115,0.22);
-  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(82,197,115,.35), rgba(77,216,177,.22));
+  border: 2px solid rgba(0,0,0,.35);
+  border-radius: 20px;
 }
 :root[data-variant="finance"][data-theme="dark"] ::-webkit-scrollbar-thumb:hover{
-  background: rgba(82,197,115,0.28);
+  background: linear-gradient(180deg, rgba(82,197,115,.55), rgba(77,216,177,.35));
 }
 
-/* =========================
-   App wrappers (safe)
-========================= */
-:root[data-variant="finance"][data-theme="dark"] #app{
+/* =========
+   TOP BAR (ปุ่มตรงหัว)
+   รองรับหลายชื่อคลาส (กันพลาด)
+========= */
+:root[data-variant="finance"][data-theme="dark"]
+.topbar,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header,
+:root[data-variant="finance"][data-theme="dark"]
+.header,
+:root[data-variant="finance"][data-theme="dark"]
+.toolbar,
+:root[data-variant="finance"][data-theme="dark"]
+#topbar{
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.18));
+  border-bottom: 1px solid var(--jmt-line);
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+}
+
+/* กลุ่มปุ่ม/ชิปในหัว (ถ้ามี) */
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .chip,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .pill,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .tag,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header .chip,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header .pill,
+:root[data-variant="finance"][data-theme="dark"]
+.header .chip,
+:root[data-variant="finance"][data-theme="dark"]
+.header .pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--jmt-line);
+  background:
+    linear-gradient(180deg, rgba(16,41,29,.55), rgba(13,26,20,.35));
   color: var(--jmt-text);
+  box-shadow: 0 10px 18px rgba(0,0,0,.25);
 }
 
-/* =========================
+/* ปุ่มในหัว: button / a / select / input (ให้ฟีลเดียวกัน) */
+:root[data-variant="finance"][data-theme="dark"]
+.topbar button,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar a.btn,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .btn,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar select,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar input,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header button,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header .btn,
+:root[data-variant="finance"][data-theme="dark"]
+.header button,
+:root[data-variant="finance"][data-theme="dark"]
+.header .btn{
+  appearance: none;
+  border: 1px solid var(--jmt-line);
+  background:
+    radial-gradient(400px 120px at 20% 0%, rgba(82,197,115,.10), transparent 60%),
+    linear-gradient(180deg, rgba(18,34,26,.75), rgba(13,26,20,.55));
+  color: var(--jmt-cream);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.28);
+  transition: transform .14s var(--jmt-ease), box-shadow .14s var(--jmt-ease), border-color .14s var(--jmt-ease), filter .14s var(--jmt-ease);
+}
+
+:root[data-variant="finance"][data-theme="dark"]
+.topbar button:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .btn:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar select:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header button:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header .btn:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.header button:hover,
+:root[data-variant="finance"][data-theme="dark"]
+.header .btn:hover{
+  border-color: var(--jmt-line-strong);
+  box-shadow: 0 14px 26px rgba(0,0,0,.34), 0 0 0 1px rgba(82,197,115,.18) inset;
+  filter: saturate(1.08);
+  transform: translateY(-1px);
+}
+
+:root[data-variant="finance"][data-theme="dark"]
+.topbar button:active,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .btn:active,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header button:active,
+:root[data-variant="finance"][data-theme="dark"]
+.app-header .btn:active,
+:root[data-variant="finance"][data-theme="dark"]
+.header button:active,
+:root[data-variant="finance"][data-theme="dark"]
+.header .btn:active{
+  transform: translateY(0px);
+  box-shadow: 0 10px 18px rgba(0,0,0,.30);
+}
+
+/* สถานะ active (เผื่อมี .active / aria-pressed / data-active) */
+:root[data-variant="finance"][data-theme="dark"]
+.topbar .active,
+:root[data-variant="finance"][data-theme="dark"]
+.topbar [aria-pressed="true"],
+:root[data-variant="finance"][data-theme="dark"]
+.topbar [data-active="true"],
+:root[data-variant="finance"][data-theme="dark"]
+.header .active,
+:root[data-variant="finance"][data-theme="dark"]
+.header [aria-pressed="true"],
+:root[data-variant="finance"][data-theme="dark"]
+.header [data-active="true"]{
+  border-color: rgba(82,197,115,.55) !important;
+  box-shadow: 0 14px 26px rgba(0,0,0,.36), 0 0 24px rgba(82,197,115,.22);
+}
+
+/* =========
    Panels Grid
-========================= */
+========= */
 :root[data-variant="finance"][data-theme="dark"] #panelsGrid.panels-grid{
-  gap: 10px;
+  gap: 12px;
 }
 
-/* =========================
+/* =========
    Panel Card
-========================= */
+========= */
 :root[data-variant="finance"][data-theme="dark"] .panel{
-  background: linear-gradient(180deg, var(--jmt-surface), var(--jmt-surface2));
-  border: 1px solid var(--jmt-border);
-  border-radius: var(--jmt-r);
-  box-shadow: var(--jmt-shadow);
+  border-radius: var(--jmt-r16);
+  border: 1px solid var(--jmt-line);
+  background:
+    radial-gradient(900px 400px at 0% 0%, rgba(82,197,115,.08), transparent 55%),
+    linear-gradient(180deg, rgba(14,27,21,.95), rgba(13,26,20,.92));
+  box-shadow: var(--jmt-shadow-soft);
   overflow: hidden;
   position: relative;
 }
 
-/* subtle inner highlight */
+/* glow frame */
 :root[data-variant="finance"][data-theme="dark"] .panel::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(900px 250px at 30% 0%, rgba(82,197,115,0.10), transparent 60%);
-  pointer-events: none;
-  opacity: 0.8;
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+  box-shadow: 0 0 0 1px rgba(82,197,115,.10) inset, 0 0 40px rgba(82,197,115,.06);
+  opacity: .9;
 }
 
-/* hover state */
 :root[data-variant="finance"][data-theme="dark"] .panel:hover{
-  border-color: var(--jmt-border-strong);
-  box-shadow: var(--jmt-shadow2);
-  transform: translateY(-1px);
-  transition: 180ms ease;
+  border-color: var(--jmt-line-strong);
+  background:
+    radial-gradient(900px 420px at 0% 0%, rgba(82,197,115,.11), transparent 55%),
+    linear-gradient(180deg, rgba(18,34,26,.96), rgba(13,26,20,.92));
+  box-shadow: var(--jmt-shadow);
 }
 
-/* Wide panel (video/live/news) */
-:root[data-variant="finance"][data-theme="dark"] .panel.panel-wide{
-  border-radius: var(--jmt-r2);
-}
-
-/* =========================
+/* =========
    Panel Header
-========================= */
+========= */
 :root[data-variant="finance"][data-theme="dark"] .panel-header{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px var(--jmt-pad);
-  border-bottom: 1px solid rgba(82,197,115,0.14);
-  background: linear-gradient(180deg, rgba(13,26,20,0.30), rgba(13,26,20,0.10));
-  position: relative;
-  z-index: 1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(82,197,115,.14);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.12));
+  backdrop-filter: blur(8px);
 }
 
 :root[data-variant="finance"][data-theme="dark"] .panel-header-left{
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
   min-width: 0;
 }
 
-/* Title text */
 :root[data-variant="finance"][data-theme="dark"] .panel-title{
-  color: var(--jmt-text);
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: .25px;
+  color: var(--jmt-cream);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* error header variant (จากรูปคุณมี .panel-header-error) */
-:root[data-variant="finance"][data-theme="dark"] .panel-header.panel-header-error{
-  border-bottom-color: rgba(255, 90, 90, 0.25);
-}
-:root[data-variant="finance"][data-theme="dark"] .panel-header.panel-header-error .panel-title{
-  color: rgba(255, 110, 110, 0.95);
-}
-
-/* =========================
-   Header badges / counts
-========================= */
-:root[data-variant="finance"][data-theme="dark"] .panel-new-badge,
-:root[data-variant="finance"][data-theme="dark"] .panel-data-badge{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 2px 8px;
+:root[data-variant="finance"][data-theme="dark"] .panel-new-badge{
   font-size: 11px;
-  line-height: 16px;
-  border: 1px solid var(--jmt-border-soft);
-  background: rgba(255,255,255,0.04);
-  color: var(--jmt-muted);
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(82,197,115,.25);
+  background: rgba(82,197,115,.10);
+  color: var(--jmt-cream);
 }
 
-/* Live badge */
-:root[data-variant="finance"][data-theme="dark"] .panel-data-badge.live{
-  border-color: rgba(77,216,177,0.35);
-  background: rgba(77,216,177,0.10);
-  color: var(--jmt-green2);
-}
-
-/* Count */
-:root[data-variant="finance"][data-theme="dark"] .panel-count{
-  color: var(--jmt-dim);
-  font-size: 12px;
-}
-
-/* =========================
-   Header action buttons
-========================= */
-:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn{
-  border: 1px solid rgba(82,197,115,0.32);
-  background: rgba(82,197,115,0.10);
-  color: var(--jmt-green);
-  border-radius: 10px;
+:root[data-variant="finance"][data-theme="dark"] .panel-data-badge{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  font-size: 11px;
   padding: 4px 8px;
-  cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(82,197,115,0.10);
-}
-:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn:hover{
-  background: rgba(82,197,115,0.16);
-  box-shadow: var(--jmt-glow);
-}
-:root[data-variant="finance"][data-theme="dark"] .panel-summarize-btn:active{
-  transform: translateY(1px);
+  border-radius: 999px;
+  border: 1px solid rgba(240,233,216,.10);
+  background: rgba(0,0,0,.25);
+  color: var(--jmt-text-dim);
 }
 
-/* if you have icon buttons in header */
-:root[data-variant="finance"][data-theme="dark"] .panel-header button{
-  outline: none;
-}
-:root[data-variant="finance"][data-theme="dark"] .panel-header button:focus{
-  box-shadow: var(--jmt-focus);
+/* live badge (ถ้ามี .live) */
+:root[data-variant="finance"][data-theme="dark"] .panel-data-badge.live{
+  border-color: rgba(77,216,177,.30);
+  box-shadow: 0 0 18px rgba(77,216,177,.14);
 }
 
-/* =========================
+/* =========
+   Header Buttons inside panel (เช่นสรุป/ตั้งค่า)
+========= */
+:root[data-variant="finance"][data-theme="dark"] .panel-header button,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .panel-summarize-btn,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .panel-action,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .icon-btn{
+  appearance: none;
+  border: 1px solid rgba(82,197,115,.20);
+  background:
+    radial-gradient(240px 90px at 20% 0%, rgba(82,197,115,.12), transparent 60%),
+    linear-gradient(180deg, rgba(18,34,26,.70), rgba(13,26,20,.55));
+  color: var(--jmt-cream);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-weight: 700;
+  box-shadow: 0 10px 18px rgba(0,0,0,.25);
+  transition: transform .14s var(--jmt-ease), box-shadow .14s var(--jmt-ease), border-color .14s var(--jmt-ease);
+}
+
+:root[data-variant="finance"][data-theme="dark"] .panel-header button:hover,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .panel-summarize-btn:hover,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .panel-action:hover,
+:root[data-variant="finance"][data-theme="dark"] .panel-header .icon-btn:hover{
+  border-color: rgba(82,197,115,.40);
+  box-shadow: 0 14px 26px rgba(0,0,0,.32), 0 0 18px rgba(82,197,115,.14);
+  transform: translateY(-1px);
+}
+
+:root[data-variant="finance"][data-theme="dark"] .panel-count{
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(240,233,216,.10);
+  background: rgba(0,0,0,.22);
+  color: var(--jmt-text-mute);
+}
+
+/* =========
    Panel Content
-========================= */
+========= */
 :root[data-variant="finance"][data-theme="dark"] .panel-content{
-  padding: 10px var(--jmt-pad) 12px;
-  color: var(--jmt-muted);
-  position: relative;
-  z-index: 1;
+  padding: 10px 12px 12px;
 }
 
-/* Common text inside content */
 :root[data-variant="finance"][data-theme="dark"] .panel-content,
-:root[data-variant="finance"][data-theme="dark"] .panel-content p,
-:root[data-variant="finance"][data-theme="dark"] .panel-content span,
-:root[data-variant="finance"][data-theme="dark"] .panel-content li{
-  color: var(--jmt-muted);
+:root[data-variant="finance"][data-theme="dark"] .panel-content *{
+  color: var(--jmt-text-dim);
 }
 
-/* Empty/error states in content (ข้อความแดงในรูป) */
-:root[data-variant="finance"][data-theme="dark"] .panel-content .error,
-:root[data-variant="finance"][data-theme="dark"] .panel-content .error-text{
-  color: rgba(255, 110, 110, 0.95);
+/* news cards / list items (เผื่อโครงสร้างเป็นรายการ) */
+:root[data-variant="finance"][data-theme="dark"] .panel-content .item,
+:root[data-variant="finance"][data-theme="dark"] .panel-content .news-item,
+:root[data-variant="finance"][data-theme="dark"] .panel-content .card{
+  border: 1px solid rgba(240,233,216,.08);
+  background: rgba(0,0,0,.18);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.22);
 }
 
-/* =========================
-   Inputs / search / chips (จากรูปมี pill buttons)
-========================= */
+:root[data-variant="finance"][data-theme="dark"] .panel-content .item:hover,
+:root[data-variant="finance"][data-theme="dark"] .panel-content .news-item:hover,
+:root[data-variant="finance"][data-theme="dark"] .panel-content .card:hover{
+  border-color: rgba(82,197,115,.20);
+  box-shadow: 0 14px 26px rgba(0,0,0,.30), 0 0 18px rgba(82,197,115,.08);
+}
+
+/* =========
+   Forms (search, dropdown)
+========= */
 :root[data-variant="finance"][data-theme="dark"] input,
 :root[data-variant="finance"][data-theme="dark"] select,
 :root[data-variant="finance"][data-theme="dark"] textarea{
-  background: rgba(13,26,20,0.55);
-  border: 1px solid rgba(82,197,115,0.22);
-  color: var(--jmt-text);
-  border-radius: 999px;
-  padding: 6px 10px;
+  border: 1px solid rgba(240,233,216,.10);
+  background: rgba(0,0,0,.22);
+  color: var(--jmt-cream);
+  border-radius: 10px;
+  padding: 8px 10px;
   outline: none;
-}
-
-:root[data-variant="finance"][data-theme="dark"] input::placeholder,
-:root[data-variant="finance"][data-theme="dark"] textarea::placeholder{
-  color: rgba(240,233,216,0.45);
+  box-shadow: 0 10px 18px rgba(0,0,0,.22);
 }
 
 :root[data-variant="finance"][data-theme="dark"] input:focus,
 :root[data-variant="finance"][data-theme="dark"] select:focus,
 :root[data-variant="finance"][data-theme="dark"] textarea:focus{
-  border-color: rgba(77,216,177,0.45);
-  box-shadow: var(--jmt-focus);
+  border-color: rgba(82,197,115,.45);
+  box-shadow: 0 0 0 3px rgba(82,197,115,.12), 0 10px 18px rgba(0,0,0,.22);
 }
 
-/* pill buttons / chips */
-:root[data-variant="finance"][data-theme="dark"] .chip,
-:root[data-variant="finance"][data-theme="dark"] .pill,
-:root[data-variant="finance"][data-theme="dark"] .tag{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(82,197,115,0.22);
-  background: rgba(16,41,29,0.35);
-  color: var(--jmt-muted);
-}
-:root[data-variant="finance"][data-theme="dark"] .chip:hover,
-:root[data-variant="finance"][data-theme="dark"] .pill:hover,
-:root[data-variant="finance"][data-theme="dark"] .tag:hover{
-  border-color: rgba(82,197,115,0.32);
-  background: rgba(16,41,29,0.48);
-}
-
-/* =========================
-   Resize handle (จาก DOM มี .panel-resize-handle)
-========================= */
+/* =========
+   Resize handle
+========= */
 :root[data-variant="finance"][data-theme="dark"] .panel-resize-handle{
-  opacity: 0.55;
-  transition: 160ms ease;
+  background: linear-gradient(90deg, transparent, rgba(82,197,115,.18), transparent);
+  opacity: .7;
 }
 :root[data-variant="finance"][data-theme="dark"] .panel:hover .panel-resize-handle{
-  opacity: 0.9;
+  opacity: 1;
 }
 
-/* =========================
-   Modals / overlays (จาก DOM มี .modal-overlay, .signal-modal-overlay)
-========================= */
-:root[data-variant="finance"][data-theme="dark"] .modal-overlay,
-:root[data-variant="finance"][data-theme="dark"] .signal-modal-overlay{
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(6px);
+/* =========
+   Error header (เช่น panel-header-error)
+========= */
+:root[data-variant="finance"][data-theme="dark"] .panel-header-error{
+  border-bottom-color: rgba(255,80,80,.25);
+}
+:root[data-variant="finance"][data-theme="dark"] .panel-header-error .panel-title{
+  color: #ff7b7b;
 }
 
-/* =========================
-   Side widgets
-========================= */
-:root[data-variant="finance"][data-theme="dark"] .community-widget,
-:root[data-variant="finance"][data-theme="dark"] .country-brief-overlay{
-  border: 1px solid rgba(82,197,115,0.18);
-  background: rgba(13,26,20,0.55);
-  box-shadow: var(--jmt-shadow);
-  border-radius: var(--jmt-r);
+/* =========
+   Small utility (optional)
+========= */
+:root[data-variant="finance"][data-theme="dark"] .muted{ color: var(--jmt-text-mute) !important; }
+:root[data-variant="finance"][data-theme="dark"] .accent{ color: var(--jmt-green) !important; }
+:root[data-variant="finance"][data-theme="dark"] .glow{
+  box-shadow: 0 0 0 1px rgba(82,197,115,.18) inset, 0 0 22px rgba(82,197,115,.14);
 }
 
-/* =========================
-   Target specific panels by data-panel
-   (ใช้ตามที่คุณเห็นใน DevTools)
-========================= */
-
-/* Example: Commodities News */
-:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="commodities-news"]{
-  border-color: rgba(77,216,177,0.30);
-}
-:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="commodities-news"] .panel-title{
-  color: var(--jmt-green2);
-}
-
-/* Example: Market Analysis */
-:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="analysis"]{
-  border-color: rgba(82,197,115,0.26);
-}
-:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="analysis"] .panel-title{
-  color: var(--jmt-cream);
-}
-
-/* Example: Economic */
-:root[data-variant="finance"][data-theme="dark"] .panel[data-panel="economic"] .panel-title{
-  color: rgba(240,233,216,0.92);
-}
-
-/* =========================
-   Safety: prevent ugly selection highlight
-========================= */
-:root[data-variant="finance"][data-theme="dark"] ::selection{
-  background: rgba(77,216,177,0.22);
-  color: var(--jmt-text);
+/* =========
+   Responsive polish
+========= */
+@media (max-width: 980px){
+  :root[data-variant="finance"][data-theme="dark"] #panelsGrid.panels-grid{ gap: 10px; }
+  :root[data-variant="finance"][data-theme="dark"] .panel-header{ padding: 9px 10px; }
+  :root[data-variant="finance"][data-theme="dark"] .panel-title{ font-size: 13px; }
 }
